@@ -55,7 +55,7 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test("True","True,<EOF>",124))
     def test_25(self):
         self.assertTrue(TestLexer.test("False","False,<EOF>",125))
-    # def test_26(self):
-    #     self.assertTrue(TestLexer.test('Array(1,2)','Array(1,2),<EOF>',126))
+    def test_26(self):
+        self.assertTrue(TestLexer.test('Array(1,2)','Array(1,2),<EOF>',126))
     # def test_26(self):
     #     self.assertTrue(TestLexer.test('Array(1, 2, 4)','Array(1,2,4),<EOF>',127))

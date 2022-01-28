@@ -74,13 +74,8 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#index_array.
-    def visitIndex_array(self, ctx:D96Parser.Index_arrayContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#expression_array.
-    def visitExpression_array(self, ctx:D96Parser.Expression_arrayContext):
+    # Visit a parse tree produced by D96Parser#array.
+    def visitArray(self, ctx:D96Parser.ArrayContext):
         return self.visitChildren(ctx)
 
 

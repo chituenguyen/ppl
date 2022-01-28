@@ -12,7 +12,7 @@ else:
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3(")
-        buf.write("\u00aa\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\u00b2\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\3\2\6\2$\n\2\r\2\16")
         buf.write("\2%\3\2\3\2\3\3\3\3\3\3\3\3\7\3.\n\3\f\3\16\3\61\13\3")
@@ -25,14 +25,15 @@ def serializedATN():
         buf.write("\r\3\r\3\r\3\r\3\r\3\r\7\r\u0082\n\r\f\r\16\r\u0085\13")
         buf.write("\r\3\r\3\r\3\16\3\16\3\17\3\17\3\17\3\17\3\17\3\20\3\20")
         buf.write("\3\20\7\20\u0093\n\20\f\20\16\20\u0096\13\20\3\20\3\20")
-        buf.write("\3\20\7\20\u009b\n\20\f\20\16\20\u009e\13\20\5\20\u00a0")
-        buf.write("\n\20\3\21\3\21\3\21\7\21\u00a5\n\21\f\21\16\21\u00a8")
+        buf.write("\3\20\7\20\u009b\n\20\f\20\16\20\u009e\13\20\3\20\3\20")
+        buf.write("\3\20\7\20\u00a3\n\20\f\20\16\20\u00a6\13\20\5\20\u00a8")
+        buf.write("\n\20\3\21\3\21\3\21\7\21\u00ad\n\21\f\21\16\21\u00b0")
         buf.write("\13\21\3\21\2\2\22\2\4\6\b\n\f\16\20\22\24\26\30\32\34")
-        buf.write("\36 \2\7\3\2\3\4\3\2\5\b\3\2\r\16\3\2\17\22\3\2!$\2\u00a9")
+        buf.write("\36 \2\7\3\2\3\4\3\2\5\b\3\2\r\16\3\2\17\22\3\2!$\2\u00b3")
         buf.write("\2#\3\2\2\2\4)\3\2\2\2\69\3\2\2\2\b;\3\2\2\2\nA\3\2\2")
         buf.write("\2\fL\3\2\2\2\16N\3\2\2\2\20X\3\2\2\2\22`\3\2\2\2\24l")
         buf.write("\3\2\2\2\26p\3\2\2\2\30r\3\2\2\2\32\u0088\3\2\2\2\34\u008a")
-        buf.write("\3\2\2\2\36\u009f\3\2\2\2 \u00a1\3\2\2\2\"$\5\4\3\2#\"")
+        buf.write("\3\2\2\2\36\u00a7\3\2\2\2 \u00a9\3\2\2\2\"$\5\4\3\2#\"")
         buf.write("\3\2\2\2$%\3\2\2\2%#\3\2\2\2%&\3\2\2\2&\'\3\2\2\2\'(\7")
         buf.write("\2\2\3(\3\3\2\2\2)*\7\f\2\2*/\7\r\2\2+,\7\37\2\2,.\7\r")
         buf.write("\2\2-+\3\2\2\2.\61\3\2\2\2/-\3\2\2\2/\60\3\2\2\2\60\62")
@@ -62,16 +63,20 @@ def serializedATN():
         buf.write("\5\36\20\2\u008d\u008e\7\31\2\2\u008e\35\3\2\2\2\u008f")
         buf.write("\u0094\5\32\16\2\u0090\u0091\7\35\2\2\u0091\u0093\5\32")
         buf.write("\16\2\u0092\u0090\3\2\2\2\u0093\u0096\3\2\2\2\u0094\u0092")
-        buf.write("\3\2\2\2\u0094\u0095\3\2\2\2\u0095\u00a0\3\2\2\2\u0096")
+        buf.write("\3\2\2\2\u0094\u0095\3\2\2\2\u0095\u00a8\3\2\2\2\u0096")
         buf.write("\u0094\3\2\2\2\u0097\u009c\7\25\2\2\u0098\u0099\7\35\2")
         buf.write("\2\u0099\u009b\7\25\2\2\u009a\u0098\3\2\2\2\u009b\u009e")
         buf.write("\3\2\2\2\u009c\u009a\3\2\2\2\u009c\u009d\3\2\2\2\u009d")
-        buf.write("\u00a0\3\2\2\2\u009e\u009c\3\2\2\2\u009f\u008f\3\2\2\2")
-        buf.write("\u009f\u0097\3\2\2\2\u00a0\37\3\2\2\2\u00a1\u00a6\5\32")
-        buf.write("\16\2\u00a2\u00a3\t\6\2\2\u00a3\u00a5\5\32\16\2\u00a4")
-        buf.write("\u00a2\3\2\2\2\u00a5\u00a8\3\2\2\2\u00a6\u00a4\3\2\2\2")
-        buf.write("\u00a6\u00a7\3\2\2\2\u00a7!\3\2\2\2\u00a8\u00a6\3\2\2")
-        buf.write("\2\21%/9GLQ]enx\u0083\u0094\u009c\u009f\u00a6")
+        buf.write("\u00a8\3\2\2\2\u009e\u009c\3\2\2\2\u009f\u00a4\7\23\2")
+        buf.write("\2\u00a0\u00a1\7\35\2\2\u00a1\u00a3\7\23\2\2\u00a2\u00a0")
+        buf.write("\3\2\2\2\u00a3\u00a6\3\2\2\2\u00a4\u00a2\3\2\2\2\u00a4")
+        buf.write("\u00a5\3\2\2\2\u00a5\u00a8\3\2\2\2\u00a6\u00a4\3\2\2\2")
+        buf.write("\u00a7\u008f\3\2\2\2\u00a7\u0097\3\2\2\2\u00a7\u009f\3")
+        buf.write("\2\2\2\u00a8\37\3\2\2\2\u00a9\u00ae\5\32\16\2\u00aa\u00ab")
+        buf.write("\t\6\2\2\u00ab\u00ad\5\32\16\2\u00ac\u00aa\3\2\2\2\u00ad")
+        buf.write("\u00b0\3\2\2\2\u00ae\u00ac\3\2\2\2\u00ae\u00af\3\2\2\2")
+        buf.write("\u00af!\3\2\2\2\u00b0\u00ae\3\2\2\2\22%/9GLQ]enx\u0083")
+        buf.write("\u0094\u009c\u00a4\u00a7\u00ae")
         return buf.getvalue()
 
 
@@ -1106,6 +1111,12 @@ class D96Parser ( Parser ):
             else:
                 return self.getToken(D96Parser.STRING_LITERAL, i)
 
+        def FLOAT_LITERAL(self, i:int=None):
+            if i is None:
+                return self.getTokens(D96Parser.FLOAT_LITERAL)
+            else:
+                return self.getToken(D96Parser.FLOAT_LITERAL, i)
+
         def getRuleIndex(self):
             return D96Parser.RULE_expression_array
 
@@ -1124,7 +1135,7 @@ class D96Parser ( Parser ):
         self.enterRule(localctx, 28, self.RULE_expression_array)
         self._la = 0 # Token type
         try:
-            self.state = 157
+            self.state = 165
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [D96Parser.INT_DEC, D96Parser.OCTAL, D96Parser.HEXADECIMAL, D96Parser.BINARY]:
@@ -1157,6 +1168,23 @@ class D96Parser ( Parser ):
                     self.state = 151
                     self.match(D96Parser.STRING_LITERAL)
                     self.state = 156
+                    self._errHandler.sync(self)
+                    _la = self._input.LA(1)
+
+                pass
+            elif token in [D96Parser.FLOAT_LITERAL]:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 157
+                self.match(D96Parser.FLOAT_LITERAL)
+                self.state = 162
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                while _la==D96Parser.COMMA:
+                    self.state = 158
+                    self.match(D96Parser.COMMA)
+                    self.state = 159
+                    self.match(D96Parser.FLOAT_LITERAL)
+                    self.state = 164
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
@@ -1230,22 +1258,22 @@ class D96Parser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 159
+            self.state = 167
             self.interger_literal()
-            self.state = 164
+            self.state = 172
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << D96Parser.ADD) | (1 << D96Parser.SUB) | (1 << D96Parser.MUL) | (1 << D96Parser.DIV))) != 0):
-                self.state = 160
+                self.state = 168
                 _la = self._input.LA(1)
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << D96Parser.ADD) | (1 << D96Parser.SUB) | (1 << D96Parser.MUL) | (1 << D96Parser.DIV))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 161
+                self.state = 169
                 self.interger_literal()
-                self.state = 166
+                self.state = 174
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 

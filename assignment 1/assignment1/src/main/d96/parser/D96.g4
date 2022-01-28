@@ -31,10 +31,26 @@ method: (IDENTIFIER | DOLLARIDENTIFIER) LB listOfParameter? RB LP blockStatement
 listOfParameter: param (SEMI param)*;
 param: IDENTIFIER (COMMA IDENTIFIER)* COLON typ;
 blockStatement: statement+;
-statement: var_cons_decl ;
-var_cons_decl: 'Var|Val' IDENTIFIER (COMMA IDENTIFIER)* COLON typ ASSIGN expression (COMMA expression)* SEMI;
-// assign_stml: ;
+statement:
+	var_cons_decl
+	| assign_stml
+	| if_stml
+	| for_stml
+	| break_stml
+	| continue_stml
+	| return_stml;
+var_cons_decl:
+	'Var|Val' IDENTIFIER (COMMA IDENTIFIER)* COLON typ ASSIGN expression (
+		COMMA expression
+	)* SEMI;
 
+assign_stml: lhs '=' expression SEMI;
+lhs : IDENTIFIER |;
+if_stml: 'If' LP expression RP blockStatement (('ElseIf') LP expression RP blockStatement)* ('Else' blockStatement)*;
+for_stml:;
+break_stml: 'Break' SEMI;
+continue_stml:;
+return_stml:;
 // 3.2
 COMMENT: '##' (.)*? '##' -> skip;
 
@@ -131,14 +147,16 @@ fragment ESCAPE_CHAR_ILEGAL: '\\' ~[bfrnt'\\] | ~'\\';
 
 index_array: 'Array' LB expression_array RB;
 expression_array: (interger_literal (COMMA interger_literal)*)
-	| (STRING_LITERAL (COMMA STRING_LITERAL)*);
+	| (STRING_LITERAL (COMMA STRING_LITERAL)*)
+	| (FLOAT_LITERAL (COMMA FLOAT_LITERAL)*);
+// array: ('Array' '(' (interger_literal (',' | interger_literal)*) ')') | ('Array' '('
+// (FLOAT_LITERAL (',' FLOAT_LITERAL)*) ')') | ('Array' '(' (STRING_LITERAL (',' STRING_LITERAL)*)
+// ')');
 
-
-expression: interger_literal ((ADD | SUB | MUL | DIV) interger_literal)*;
+expression:
+	interger_literal ((ADD | SUB | MUL | DIV) interger_literal)*;
 
 // multi_array: 'Array' LB (index_array (COMMA index_array)*) RB;
-
-
 
 // 4
 
@@ -148,6 +166,8 @@ expression: interger_literal ((ADD | SUB | MUL | DIV) interger_literal)*;
 
 // NUMBER_WITH_UNDERSCORE : ([0]|[1-9]([0-9]*([_]?[0-9]+))*){ d="" for v in self.text: if v != "_":
 // d+=v self.text = d };
+
+// statement
 
 UNDERSCORE: '_';
 INTLIT: [0-9]+;
