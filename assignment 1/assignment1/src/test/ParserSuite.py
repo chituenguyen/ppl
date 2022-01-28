@@ -50,4 +50,4 @@ class ParserSuite(unittest.TestCase):
         }
         """
         expect = "successful"
-        self.assertTrue(TestParser.test(input, expect, 203))
+        self.assertTrue(TestParser.test(input, expect, 204))

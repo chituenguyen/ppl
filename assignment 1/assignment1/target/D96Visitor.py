@@ -59,6 +59,16 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by D96Parser#statement.
+    def visitStatement(self, ctx:D96Parser.StatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by D96Parser#var_cons_decl.
+    def visitVar_cons_decl(self, ctx:D96Parser.Var_cons_declContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by D96Parser#interger_literal.
     def visitInterger_literal(self, ctx:D96Parser.Interger_literalContext):
         return self.visitChildren(ctx)
@@ -76,11 +86,6 @@ class D96Visitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by D96Parser#expression.
     def visitExpression(self, ctx:D96Parser.ExpressionContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#multi_array.
-    def visitMulti_array(self, ctx:D96Parser.Multi_arrayContext):
         return self.visitChildren(ctx)
 
 
