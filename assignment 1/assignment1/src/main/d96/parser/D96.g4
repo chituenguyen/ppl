@@ -12,25 +12,38 @@ program: (class_declare)+ EOF;
 
 // 2.1 Class declaration
 
-class_declare: CLASS identifier (COLON ID)* LP listOfMember RP; 
-listOfMember: (attribute | method);
+class_declare: CLASS IDENTIFIER (COLON IDENTIFIER)* LP listOfMember RP; 
+// listOfMember: class_Elements|;
+// class_Elements : class_Element class_Elements | class_Element;
+// class_Element:attribute;
+listOfMember: (attribute | method|);
 
 // 2.2
-attribute :(mutable | immutable);
-mutable: VAR listOfAttributeName COLON typ ASSIGN expression SEMI;
-immutable: VAL listOfAttributeName COLON typ ASSIGN expression SEMI;
+// attribute :(mutable | immutable);
+// mutable: VAR listOfAttributeName COLON typ ASSIGN expression SEMI;
+// immutable: VAL listOfAttributeName COLON typ ASSIGN expression SEMI;
+attribute:('Var'|'Val') listOfAttributeName COLON typ SEMI;
+typ : 'Int' | 'Float'|'Boolean'|'String' ;
 
-listOfAttributeName: (identifier|dollarIdentifier) (COMMA DOLA?(identifier|dollarIdentifier))*;
+listOfAttributeName: IDENTIFIER COMMA *listOfAttributeName | IDENTIFIER;
 
 // 2.3 chua xong
-method: (identifier|dollarIdentifier) LP listOfParameter? RP blockStatement;
+method: (IDENTIFIER|DOLLARIDENTIFIER) LB listOfParameter? RB LP blockStatement RP;
+listOfParameter:param (SEMI param)*;
+param : IDENTIFIER (COMMA IDENTIFIER)* COLON typ;
+blockStatement: statement+;
+statement:;
+
+
 
 // 3.2
 COMMENT : '##' (.)*? '##' -> skip;
 
 // 3.3
-identifier :(ID|UNDERSCORE)(ID|UNDERSCORE|INTLIT)*;
-dollarIdentifier: DOLA (ID|UNDERSCORE|INTLIT)+;
+CLASS:'Class';
+IDENTIFIER:([A-Za-z]|'_')+ ([A-Za-z0-9]|'_')* ;
+
+DOLLARIDENTIFIER: DOLA [A-Za-z_]+ [A-Za-z_0-9]*;
 
 // 3.7
 interger_literal :INT_DEC | OCTAL | HEXADECIMAL | BINARY;
@@ -133,30 +146,11 @@ multi_array : 'Array' LB (index_array (COMMA index_array)*) RB;
 
 
 // Utilities
-CLASS : 'Class';
-
-
-VAL : 'Val';
-VAR : 'Var';
-
-typ : ;
 
 
 
-listOfParameter:param (SEMI param)*;
-param : ID (COMMA ID)* COLON typ;
-blockStatement:;
-
-
-
-
-NUMBER_WITH_UNDERSCORE : ([0]|[1-9]([0-9]*([_]?[0-9]+))*){ 
-    d=""
-    for v in self.text:
-        if v != "_":
-            d+=v
-    self.text = d
-};
+// VAL : 'Val';
+// VAR : 'Var';
 
 
 
@@ -167,7 +161,24 @@ NUMBER_WITH_UNDERSCORE : ([0]|[1-9]([0-9]*([_]?[0-9]+))*){
 
 
 
-ID: [a-zA-Z]+;
+// NUMBER_WITH_UNDERSCORE : ([0]|[1-9]([0-9]*([_]?[0-9]+))*){ 
+//     d=""
+//     for v in self.text:
+//         if v != "_":
+//             d+=v
+//     self.text = d
+// };
+
+
+
+
+
+
+
+
+
+
+
 UNDERSCORE : '_';
 INTLIT: [0-9]+;
 

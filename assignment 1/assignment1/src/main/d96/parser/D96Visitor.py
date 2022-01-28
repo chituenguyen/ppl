@@ -14,11 +14,6 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#programclass.
-    def visitProgramclass(self, ctx:D96Parser.ProgramclassContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by D96Parser#class_declare.
     def visitClass_declare(self, ctx:D96Parser.Class_declareContext):
         return self.visitChildren(ctx)
@@ -34,13 +29,8 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#mutable.
-    def visitMutable(self, ctx:D96Parser.MutableContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#immutable.
-    def visitImmutable(self, ctx:D96Parser.ImmutableContext):
+    # Visit a parse tree produced by D96Parser#typ.
+    def visitTyp(self, ctx:D96Parser.TypContext):
         return self.visitChildren(ctx)
 
 
@@ -51,31 +41,6 @@ class D96Visitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by D96Parser#method.
     def visitMethod(self, ctx:D96Parser.MethodContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#identifier.
-    def visitIdentifier(self, ctx:D96Parser.IdentifierContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#dollarIdentifier.
-    def visitDollarIdentifier(self, ctx:D96Parser.DollarIdentifierContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#interger_literal.
-    def visitInterger_literal(self, ctx:D96Parser.Interger_literalContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#typ.
-    def visitTyp(self, ctx:D96Parser.TypContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#expression.
-    def visitExpression(self, ctx:D96Parser.ExpressionContext):
         return self.visitChildren(ctx)
 
 
@@ -91,6 +56,31 @@ class D96Visitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by D96Parser#blockStatement.
     def visitBlockStatement(self, ctx:D96Parser.BlockStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by D96Parser#interger_literal.
+    def visitInterger_literal(self, ctx:D96Parser.Interger_literalContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by D96Parser#index_array.
+    def visitIndex_array(self, ctx:D96Parser.Index_arrayContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by D96Parser#expression_array.
+    def visitExpression_array(self, ctx:D96Parser.Expression_arrayContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by D96Parser#expression.
+    def visitExpression(self, ctx:D96Parser.ExpressionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by D96Parser#multi_array.
+    def visitMulti_array(self, ctx:D96Parser.Multi_arrayContext):
         return self.visitChildren(ctx)
 
 

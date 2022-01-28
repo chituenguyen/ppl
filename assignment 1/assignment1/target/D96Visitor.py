@@ -29,13 +29,8 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#mutable.
-    def visitMutable(self, ctx:D96Parser.MutableContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#immutable.
-    def visitImmutable(self, ctx:D96Parser.ImmutableContext):
+    # Visit a parse tree produced by D96Parser#typ.
+    def visitTyp(self, ctx:D96Parser.TypContext):
         return self.visitChildren(ctx)
 
 
@@ -49,13 +44,18 @@ class D96Visitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#identifier.
-    def visitIdentifier(self, ctx:D96Parser.IdentifierContext):
+    # Visit a parse tree produced by D96Parser#listOfParameter.
+    def visitListOfParameter(self, ctx:D96Parser.ListOfParameterContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by D96Parser#dollarIdentifier.
-    def visitDollarIdentifier(self, ctx:D96Parser.DollarIdentifierContext):
+    # Visit a parse tree produced by D96Parser#param.
+    def visitParam(self, ctx:D96Parser.ParamContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by D96Parser#blockStatement.
+    def visitBlockStatement(self, ctx:D96Parser.BlockStatementContext):
         return self.visitChildren(ctx)
 
 
@@ -81,26 +81,6 @@ class D96Visitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by D96Parser#multi_array.
     def visitMulti_array(self, ctx:D96Parser.Multi_arrayContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#typ.
-    def visitTyp(self, ctx:D96Parser.TypContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#listOfParameter.
-    def visitListOfParameter(self, ctx:D96Parser.ListOfParameterContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#param.
-    def visitParam(self, ctx:D96Parser.ParamContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by D96Parser#blockStatement.
-    def visitBlockStatement(self, ctx:D96Parser.BlockStatementContext):
         return self.visitChildren(ctx)
 
 
