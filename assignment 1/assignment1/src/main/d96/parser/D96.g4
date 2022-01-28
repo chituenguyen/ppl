@@ -8,10 +8,10 @@ options {
 	language = Python3;
 }
 
-program: (class_declare programclass)+ EOF;
+program: (class_declare)+ EOF;
 
 // 2.1 Class declaration
-programclass: CLASS 'Program' 'main' LP RP LB 'programclassbody' RB;
+
 class_declare: CLASS identifier (COLON ID)* LP listOfMember RP; 
 listOfMember: (attribute | method);
 
@@ -41,21 +41,21 @@ INT_DEC :'0'|[1-9][0-9]*('_'[0-9]+)*{
             d += i
     self.text = d
 };
-OCTAL : '0'[0-7][0-7]*('_'[0-7]+)*{
+OCTAL : ('00')|'0'[1-7][0-7]*('_'[0-7]+)*{
     d = ""
     for i in self.text:
         if i != "_":
             d += i
     self.text = d
 };
-HEXADECIMAL: '0'[xX][0-9A-F]+('_'[0-9A-F]+)*{
+HEXADECIMAL: '0'[xX][1-9A-F][0-9A-F]*('_'[0-9A-F]+)*{
     d = ""
     for i in self.text:
         if i != "_":
             d += i
     self.text = d
 };
-BINARY:'0'[bB][0-1]+('_'[0-1]+)*{
+BINARY:('0b0'|'0B0')|'0'[bB]('1')[0-1]*('_'[0-1]+)*{
     d = ""
     for i in self.text:
         if i != "_":
@@ -100,18 +100,32 @@ fragment SIGN: [+-] ;
 
 BOOLEAN_LITERAL : 'True|False';
 
-STRING_LITERAL: '"' STR_CHAR* '"'
+STRING_LITERAL
+	: '"' CHARACTER* '"'
 	{
-		y = str(self.text)
-		self.text = y[1:-1]
+		inputstr=str(self.text)
+		self.text=inputstr[1:-1]
 	}
 	;
-fragment STR_CHAR: ~[\b\t\n\f\r"'\\] | ESC_SEQ ;
-fragment ESC_SEQ: '\\' [btnfr"'\\] ;
+
+fragment CHARACTER
+	: ~[\b\f\r\n\t"'\\]|ESCAPE_CHAR|DOUBLE_QUOTE_IN_STRING
+	;
+fragment ESCAPE_CHAR
+	: '\\' [bfrnt'\\]
+	;
+fragment DOUBLE_QUOTE_IN_STRING
+	:'\'"'
+	;
+fragment ESCAPE_CHAR_ILEGAL
+	: '\\' ~[bfrnt'\\] 
+	| ~'\\'
+	;
 
 
 index_array : 'Array' LB expression_array RB;
 expression_array : (expression (COMMA expression)*) | (STRING_LITERAL (COMMA STRING_LITERAL)*) ;
+expression: INTLIT ((ADD|SUB|MUL|DIV) INTLIT)*;
 
 multi_array : 'Array' LB (index_array (COMMA index_array)*) RB;
 
@@ -127,7 +141,7 @@ VAR : 'Var';
 
 typ : ;
 
-expression: INTLIT ((ADD|SUB|MUL|DIV) INTLIT)*;
+
 
 listOfParameter:param (SEMI param)*;
 param : ID (COMMA ID)* COLON typ;
@@ -190,6 +204,24 @@ DIV : '/';
 WS: [ \t\r\n]+ -> skip; // skip spaces, tabs, newlines
 
 
-ERROR_CHAR: .;
-UNCLOSE_STRING: .;
-ILLEGAL_ESCAPE: .;
+ERROR_CHAR: .
+	{
+		raise ErrorToken(self.text)
+	}
+	;
+UNCLOSE_STRING
+	: '"' CHARACTER* END_A_LINE_SIGN 
+	{ 
+		unclose_str=str(self.text)
+		raise UncloseString(unclose_str[1:])
+	};
+fragment END_A_LINE_SIGN
+	: [\b\t\n\f\r"'\\] | EOF
+	;
+ILLEGAL_ESCAPE
+	: '"' CHARACTER* ESCAPE_CHAR_ILEGAL
+	{
+		ilegal = str(self.text)
+		raise IllegalEscape(ilegal[1:])
+	}
+	;
